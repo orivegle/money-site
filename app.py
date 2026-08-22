@@ -1,12 +1,16 @@
 from flask import (
     Flask,
     render_template,
-    request
+    request,
+    Response,
+    abort,
+    url_for
 )
 
 from database import (
     init_db,
-    get_deals
+    get_deals,
+    get_deal_by_id
 )
 
 
@@ -51,6 +55,80 @@ def home():
         categories=categories,
         selected_category=selected_category,
         rakuten_affiliate_url=RAKUTEN_AFFILIATE_URL
+    )
+
+
+@app.route("/deal/<int:deal_id>")
+def deal_detail(deal_id):
+
+    deal = get_deal_by_id(deal_id)
+
+    if deal is None:
+        abort(404)
+
+    return render_template(
+        "deal.html",
+        deal=deal,
+        rakuten_affiliate_url=RAKUTEN_AFFILIATE_URL
+    )
+
+
+@app.route("/sitemap.xml")
+def sitemap():
+
+    deals = get_deals()
+
+    urls = []
+
+    urls.append(
+        url_for(
+            "home",
+            _external=True
+        )
+    )
+
+    for deal in deals:
+
+        urls.append(
+            url_for(
+                "deal_detail",
+                deal_id=deal[0],
+                _external=True
+            )
+        )
+
+    xml = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+    ]
+
+    for url in urls:
+
+        xml.append("<url>")
+        xml.append(f"<loc>{url}</loc>")
+        xml.append("</url>")
+
+    xml.append("</urlset>")
+
+    return Response(
+        "\n".join(xml),
+        mimetype="application/xml"
+    )
+
+
+@app.route("/robots.txt")
+def robots():
+
+    content = """
+User-agent: *
+Allow: /
+
+Sitemap: https://money-site.onrender.com/sitemap.xml
+""".strip()
+
+    return Response(
+        content,
+        mimetype="text/plain"
     )
 
 

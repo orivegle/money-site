@@ -6,12 +6,10 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 
 def get_connection():
 
-    # Render / GitHub Actions では PostgreSQL
     if DATABASE_URL:
         import psycopg2
         return psycopg2.connect(DATABASE_URL)
 
-    # 自分のPCでは SQLite
     return sqlite3.connect("site.db")
 
 
@@ -51,7 +49,6 @@ def init_db():
         """)
 
     conn.commit()
-
     cursor.close()
     conn.close()
 
@@ -91,7 +88,6 @@ def add_deal(title, description, url, category):
             ))
 
         added = cursor.rowcount > 0
-
         conn.commit()
 
     except Exception:
@@ -166,6 +162,47 @@ def get_deals(category=None):
     return deals
 
 
+def get_deal_by_id(deal_id):
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    if is_postgres():
+
+        cursor.execute("""
+            SELECT
+                id,
+                title,
+                description,
+                url,
+                created_at,
+                category
+            FROM deals
+            WHERE id = %s
+        """, (deal_id,))
+
+    else:
+
+        cursor.execute("""
+            SELECT
+                id,
+                title,
+                description,
+                url,
+                created_at,
+                category
+            FROM deals
+            WHERE id = ?
+        """, (deal_id,))
+
+    deal = cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+
+    return deal
+
+
 def delete_old_deals(days=7):
 
     conn = get_connection()
@@ -189,7 +226,6 @@ def delete_old_deals(days=7):
     deleted = cursor.rowcount
 
     conn.commit()
-
     cursor.close()
     conn.close()
 
@@ -208,7 +244,6 @@ def delete_all_deals():
     deleted = cursor.rowcount
 
     conn.commit()
-
     cursor.close()
     conn.close()
 

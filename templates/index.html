@@ -114,13 +114,11 @@
 
 
                     <a
-                        href="{{ deal[3] }}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="detail-button"
-                    >
-                        詳細を見る →
-                    </a>
+    href="{{ url_for('deal_detail', deal_id=deal[0]) }}"
+    class="detail-button"
+>
+    詳細を見る →
+</a>
 
 
                     {% if deal[5] == "楽天" %}

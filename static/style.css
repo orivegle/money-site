@@ -300,3 +300,48 @@ footer {
         text-align: center;
     }
 }
+
+.detail-page {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 16px;
+
+    box-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.detail-page h1 {
+    font-size: 28px;
+    line-height: 1.5;
+    margin-top: 20px;
+}
+
+.detail-description {
+    margin-top: 25px;
+    line-height: 1.9;
+    color: #555;
+}
+
+.detail-category {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 6px 12px;
+
+    border-radius: 6px;
+
+    background: #fff1ec;
+    color: #e95520;
+
+    font-weight: bold;
+}
+
+.back-link {
+    color: #666;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
