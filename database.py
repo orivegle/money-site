@@ -6,12 +6,12 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 
 def get_connection():
 
-    # RenderではPostgreSQL
+    # Render / GitHub Actions では PostgreSQL
     if DATABASE_URL:
         import psycopg2
         return psycopg2.connect(DATABASE_URL)
 
-    # 自分のPCではSQLite
+    # 自分のPCでは SQLite
     return sqlite3.connect("site.db")
 
 
@@ -185,6 +185,25 @@ def delete_old_deals(days=7):
             DELETE FROM deals
             WHERE created_at < datetime('now', ?)
         """, (f"-{days} days",))
+
+    deleted = cursor.rowcount
+
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+    return deleted
+
+
+def delete_all_deals():
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        DELETE FROM deals
+    """)
 
     deleted = cursor.rowcount
 
