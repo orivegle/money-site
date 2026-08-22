@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="{{ deal[2][:120] }}"
+    >
+
+    <title>
+        {{ deal[1] }} | 今日のお得情報
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="container">
+
+        <h1>
+            🔥 今日のお得情報
+        </h1>
+
+        <p>
+            セール・キャンペーン・クーポン情報まとめ
+        </p>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <article class="detail-page">
+
+        <a
+            href="/"
+            class="back-link"
+        >
+            ← お得情報一覧へ戻る
+        </a>
+
+
+        <div class="detail-category">
+
+            {{ deal[5] }}
+
+        </div>
+
+
+        <h1>
+
+            {{ deal[1] }}
+
+        </h1>
+
+
+        <p class="detail-description">
+
+            {{ deal[2] }}
+
+        </p>
+
+
+        <a
+            href="{{ deal[3] }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="detail-button"
+        >
+
+            元の記事を確認する →
+
+        </a>
+
+
+        {% if deal[5] == "楽天" %}
+
+            <a
+                href="{{ rakuten_affiliate_url }}"
+                target="_blank"
+                rel="nofollow sponsored noopener"
+                class="rakuten-button"
+            >
+
+                🛒 楽天市場でお得商品を探す
+
+            </a>
+
+        {% endif %}
+
+    </article>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 今日のお得情報
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
