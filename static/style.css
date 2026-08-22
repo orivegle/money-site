@@ -1,0 +1,313 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    background: #f5f6f8;
+
+    color: #222;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans JP",
+        sans-serif;
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: auto;
+}
+
+
+/* ヘッダー */
+
+header {
+    background: white;
+
+    border-bottom: 1px solid #ddd;
+
+    padding: 30px 0;
+}
+
+header h1 {
+    margin: 0;
+
+    font-size: 32px;
+}
+
+header p {
+    margin-bottom: 0;
+
+    color: #666;
+}
+
+
+/* カテゴリー */
+
+.category-area {
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-top: 30px;
+}
+
+.category-button {
+    padding: 9px 16px;
+
+    border-radius: 50px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    color: #444;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.category-button:hover {
+    transform: translateY(-1px);
+
+    border-color: #ff6b35;
+}
+
+.category-button.active {
+    background: #ff6b35;
+
+    color: white;
+
+    border-color: #ff6b35;
+
+    font-weight: bold;
+}
+
+
+/* 上部 */
+
+.top {
+    margin: 30px 0 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.top h2 {
+    margin: 0;
+}
+
+.top span {
+    color: #777;
+}
+
+
+/* カード一覧 */
+
+.deal-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(300px, 1fr)
+        );
+
+    gap: 20px;
+}
+
+
+/* カード */
+
+.deal-card {
+    background: white;
+
+    padding: 24px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.06);
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition: 0.2s;
+}
+
+.deal-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 7px 22px rgba(0, 0, 0, 0.10);
+}
+
+
+/* カード上部 */
+
+.card-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+/* カテゴリー */
+
+.category-tag {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 6px;
+
+    background: #fff1ec;
+
+    color: #e95520;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+/* NEW */
+
+.new-badge {
+    background: #ff4757;
+
+    color: white;
+
+    padding: 4px 8px;
+
+    border-radius: 5px;
+
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+
+/* タイトル */
+
+.deal-card h2 {
+    margin-top: 16px;
+
+    font-size: 19px;
+
+    line-height: 1.5;
+}
+
+
+/* 説明 */
+
+.deal-card p {
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    flex-grow: 1;
+}
+
+
+/* 詳細ボタン */
+
+.detail-button {
+    display: inline-block;
+
+    width: fit-content;
+
+    margin-top: 10px;
+
+    padding: 11px 17px;
+
+    background: #ff6b35;
+
+    color: white;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.detail-button:hover {
+    opacity: 0.85;
+}
+
+
+/* 情報なし */
+
+.empty {
+    background: white;
+
+    padding: 50px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    color: #777;
+}
+
+
+/* フッター */
+
+footer {
+    padding: 50px 20px;
+
+    text-align: center;
+
+    color: #999;
+}
+
+
+/* スマホ */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .top {
+        align-items: flex-start;
+
+        gap: 10px;
+
+        flex-direction: column;
+    }
+
+    .deal-list {
+        grid-template-columns: 1fr;
+    }
+
+    .category-area {
+        gap: 7px;
+    }
+
+    .category-button {
+        font-size: 13px;
+
+        padding: 8px 13px;
+    }
+
+}

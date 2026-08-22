@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Amazon・楽天・コンビニ・飲食店などのお得なセール、キャンペーン、クーポン情報をまとめています。"
+    >
+
+    <title>
+        今日のお得情報 | セール・キャンペーンまとめ
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+
+<body>
+
+<header>
+
+    <div class="container">
+
+        <h1>
+            🔥 今日のお得情報
+        </h1>
+
+        <p>
+            セール・キャンペーン・クーポン情報をまとめています
+        </p>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+    <section class="category-area">
+
+        {% for category in categories %}
+
+            <a
+                href="/?category={{ category }}"
+                class="category-button
+                {% if selected_category == category %}
+                    active
+                {% endif %}
+                "
+            >
+
+                {{ category }}
+
+            </a>
+
+        {% endfor %}
+
+    </section>
+
+
+    <div class="top">
+
+        <h2>
+            {{ selected_category }}のお得情報
+        </h2>
+
+        <span>
+            {{ deals|length }}件掲載中
+        </span>
+
+    </div>
+
+
+    {% if deals %}
+
+        <div class="deal-list">
+
+            {% for deal in deals %}
+
+                <article class="deal-card">
+
+                    <div class="card-top">
+
+                        <span class="category-tag">
+
+                            {{ deal[5] }}
+
+                        </span>
+
+                        <span class="new-badge">
+                            NEW
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+
+                        {{ deal[1] }}
+
+                    </h2>
+
+
+                    <p>
+
+                        {{ deal[2] }}
+
+                    </p>
+
+
+                    <a
+                        href="{{ deal[3] }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="detail-button"
+                    >
+
+                        詳細を見る →
+
+                    </a>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="empty">
+
+            <h2>
+                現在情報がありません
+            </h2>
+
+            <p>
+                次回の更新をお待ちください。
+            </p>
+
+        </div>
+
+    {% endif %}
+
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 今日のお得情報
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
