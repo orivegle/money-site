@@ -15,6 +15,15 @@ app = Flask(__name__)
 init_db()
 
 
+RAKUTEN_AFFILIATE_URL = (
+    "https://hb.afl.rakuten.co.jp/hgc/"
+    "1a93975d.d486e394.1a93975e.93b88581/"
+    "?pc=https%3A%2F%2Fwww.rakuten.co.jp%2F"
+    "&link_type=text"
+    "&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9"
+)
+
+
 @app.route("/")
 def home():
 
@@ -40,7 +49,8 @@ def home():
         "index.html",
         deals=deals,
         categories=categories,
-        selected_category=selected_category
+        selected_category=selected_category,
+        rakuten_affiliate_url=RAKUTEN_AFFILIATE_URL
     )
 
 

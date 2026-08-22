@@ -4,9 +4,7 @@
 
 body {
     margin: 0;
-
     background: #f5f6f8;
-
     color: #222;
 
     font-family:
@@ -23,85 +21,70 @@ body {
 }
 
 
-/* ヘッダー */
+/* =========================
+   ヘッダー
+========================= */
 
 header {
     background: white;
-
     border-bottom: 1px solid #ddd;
-
     padding: 30px 0;
 }
 
 header h1 {
     margin: 0;
-
     font-size: 32px;
 }
 
 header p {
     margin-bottom: 0;
-
     color: #666;
 }
 
 
-/* カテゴリー */
+/* =========================
+   カテゴリー
+========================= */
 
 .category-area {
     display: flex;
-
     gap: 10px;
-
     flex-wrap: wrap;
-
     margin-top: 30px;
 }
 
 .category-button {
     padding: 9px 16px;
-
     border-radius: 50px;
-
     background: white;
-
     border: 1px solid #ddd;
-
     color: #444;
-
     text-decoration: none;
-
     font-size: 14px;
-
     transition: 0.2s;
 }
 
 .category-button:hover {
     transform: translateY(-1px);
-
     border-color: #ff6b35;
 }
 
 .category-button.active {
     background: #ff6b35;
-
     color: white;
-
     border-color: #ff6b35;
-
     font-weight: bold;
 }
 
 
-/* 上部 */
+/* =========================
+   一覧上部
+========================= */
 
 .top {
     margin: 30px 0 20px;
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 }
 
@@ -114,7 +97,9 @@ header p {
 }
 
 
-/* カード一覧 */
+/* =========================
+   カード一覧
+========================= */
 
 .deal-list {
     display: grid;
@@ -129,22 +114,20 @@ header p {
 }
 
 
-/* カード */
+/* =========================
+   カード
+========================= */
 
 .deal-card {
     background: white;
-
     padding: 24px;
-
     border-radius: 16px;
 
     box-shadow:
         0 2px 10px rgba(0, 0, 0, 0.06);
 
     display: flex;
-
     flex-direction: column;
-
     transition: 0.2s;
 }
 
@@ -160,28 +143,20 @@ header p {
 
 .card-top {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 }
 
 
-/* カテゴリー */
+/* カテゴリータグ */
 
 .category-tag {
     display: inline-block;
-
     padding: 5px 10px;
-
     border-radius: 6px;
-
     background: #fff1ec;
-
     color: #e95520;
-
     font-size: 12px;
-
     font-weight: bold;
 }
 
@@ -190,15 +165,10 @@ header p {
 
 .new-badge {
     background: #ff4757;
-
     color: white;
-
     padding: 4px 8px;
-
     border-radius: 5px;
-
     font-size: 10px;
-
     font-weight: bold;
 }
 
@@ -207,9 +177,7 @@ header p {
 
 .deal-card h2 {
     margin-top: 16px;
-
     font-size: 19px;
-
     line-height: 1.5;
 }
 
@@ -218,34 +186,27 @@ header p {
 
 .deal-card p {
     color: #666;
-
     font-size: 14px;
-
     line-height: 1.7;
-
     flex-grow: 1;
 }
 
 
-/* 詳細ボタン */
+/* =========================
+   通常の詳細ボタン
+========================= */
 
 .detail-button {
     display: inline-block;
-
     width: fit-content;
-
     margin-top: 10px;
-
     padding: 11px 17px;
 
     background: #ff6b35;
-
     color: white;
 
     border-radius: 9px;
-
     text-decoration: none;
-
     font-weight: bold;
 }
 
@@ -254,33 +215,59 @@ header p {
 }
 
 
-/* 情報なし */
+/* =========================
+   楽天アフィリエイトボタン
+========================= */
+
+.rakuten-button {
+    display: inline-block;
+    width: fit-content;
+    margin-top: 10px;
+    padding: 11px 17px;
+
+    background: #bf0000;
+    color: white;
+
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.rakuten-button:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   情報なし
+========================= */
 
 .empty {
     background: white;
-
     padding: 50px;
-
     border-radius: 15px;
-
     text-align: center;
-
     color: #777;
 }
 
 
-/* フッター */
+/* =========================
+   フッター
+========================= */
 
 footer {
     padding: 50px 20px;
-
     text-align: center;
-
     color: #999;
 }
 
 
-/* スマホ */
+/* =========================
+   スマホ対応
+========================= */
 
 @media (max-width: 600px) {
 
@@ -290,9 +277,7 @@ footer {
 
     .top {
         align-items: flex-start;
-
         gap: 10px;
-
         flex-direction: column;
     }
 
@@ -306,8 +291,12 @@ footer {
 
     .category-button {
         font-size: 13px;
-
         padding: 8px 13px;
     }
 
+    .detail-button,
+    .rakuten-button {
+        width: 100%;
+        text-align: center;
+    }
 }

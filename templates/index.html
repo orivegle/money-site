@@ -93,9 +93,7 @@
                     <div class="card-top">
 
                         <span class="category-tag">
-
                             {{ deal[5] }}
-
                         </span>
 
                         <span class="new-badge">
@@ -106,16 +104,12 @@
 
 
                     <h2>
-
                         {{ deal[1] }}
-
                     </h2>
 
 
                     <p>
-
                         {{ deal[2] }}
-
                     </p>
 
 
@@ -125,10 +119,22 @@
                         rel="noopener noreferrer"
                         class="detail-button"
                     >
-
                         詳細を見る →
-
                     </a>
+
+
+                    {% if deal[5] == "楽天" %}
+
+                        <a
+                            href="{{ rakuten_affiliate_url }}"
+                            target="_blank"
+                            rel="nofollow sponsored noopener"
+                            class="rakuten-button"
+                        >
+                            🛒 楽天市場でお得商品を探す
+                        </a>
+
+                    {% endif %}
 
                 </article>
 
